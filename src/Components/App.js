@@ -1,11 +1,14 @@
+// import { Fragment } from "react"
+// import LoadingBar from "react-redux-loading-bar";
+
+const App = () => {
 
 
-function App() {
   return (
-    <div className="App">
-      Starter Code
-    </div>
-  );
+   <div>
+    HomePage
+   </div>
+  )
 }
 
 export default App;
