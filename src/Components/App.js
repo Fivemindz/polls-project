@@ -1,14 +1,25 @@
 import { Fragment, useEffect } from "react";
-import { LoadingBar } from "react-redux-loading-bar";
+import { connect } from "react-redux";
+import { handleInitialData } from "../actions/shared";
 import Home from "./Home";
+import { LoadingBar } from "react-redux-loading-bar";
+import Login from "./Login";
 
-const App = () => {
+const App = (props) => {
+  useEffect(() => {
+    props.dispatch(handleInitialData());
+  }, [])
 
   return (
-   <Fragment>
-    <Home />
-   </Fragment>
+  <Fragment>
+    <LoadingBar />
+      <Login />
+  </Fragment>
   )
 }
 
-export default App;
+const mapStateToProps = ({ authedUser }) => ({
+  loading: authedUser === null,
+});
+
+export default connect(mapStateToProps)(App);
