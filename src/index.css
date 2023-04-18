@@ -162,3 +162,8 @@ li {
   color: #c3392a;
 }
 
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
