@@ -1,21 +1,30 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
-import Home from "./Home";
 import LoadingBar from "react-redux-loading-bar";
+import Home from "./Home";
 import Login from "./Login";
-import { Routes, Route } from "react-router-dom";
-import { handleInitialData } from "../actions/shared";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 const App = (props) => {
+  const [initialized, setInitialized] = useState(false);
+  const navigate = useNavigate();
+  const { authedUser, isLoading } = props;
+
   useEffect(() => {
-    console.log("Rerender");
-  }, []);
+    if (!initialized) {
+      if (authedUser === undefined) {
+        console.log("Navigating to login");
+        navigate("/login");
+      }
+      setInitialized(true);
+    }
+  });
 
   return (
     <Fragment>
       <LoadingBar />
       <div className="container">
-        {props.LoadingBar === true ? null : (
+        {isLoading ? null : (
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/login" element={<Login />} />

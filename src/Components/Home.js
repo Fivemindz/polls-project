@@ -1,27 +1,35 @@
 import { connect } from "react-redux";
-import Question from "./Question";
+import { useState, useEffect } from "react";
 import { handleInitialData } from "../actions/shared";
-import { useEffect } from "react";
-import { setAuthedUser } from "../actions/authedUser";
-import { useNavigate } from "react-router-dom";
+import Question from "./Question";
 
 const Home = (props) => {
+  const [initialData, setInitialData] = useState(false);
+  const { authedUser, dispatch, questionIds } = props;
+
   useEffect(() => {
-    props.dispatch(handleInitialData());
-    console.log("Rerender");
+    const getInitialData = () => {
+      dispatch(handleInitialData());
+      setInitialData(true);
+    };
+    if (initialData === false) {
+      if (authedUser !== null) {
+        getInitialData();
+      }
+    }
   });
 
   return (
     <div>
       <h3 className="center">Your Poll Questions</h3>
-      {/* <span>{props.authedUser}</span> */}
+      <span>{initialData && authedUser}</span>
       <ul className="dashboard-list">
-        {/* {props.questionIds &&
-          props.questionIds.map((id) => (
+        {initialData &&
+          questionIds.map((id) => (
             <li key={id}>
               <Question id={id} />
             </li>
-          ))} */}
+          ))}
       </ul>
     </div>
   );
