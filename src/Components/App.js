@@ -1,29 +1,17 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import { connect } from "react-redux";
 import LoadingBar from "react-redux-loading-bar";
 import Home from "./Home";
 import Login from "./Login";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 const App = (props) => {
-  const [initialized, setInitialized] = useState(false);
-  const navigate = useNavigate();
-  const { authedUser, isLoading } = props;
-
-  useEffect(() => {
-    if (!initialized) {
-      if (authedUser === undefined) {
-        console.log("Navigating to login");
-        navigate("/login");
-      }
-      setInitialized(true);
-    }
-  });
+  const { isLoading } = props;
 
   return (
     <Fragment>
       <LoadingBar />
-      <div className="container">
+      <div className="container" data-testid="home-page">
         {isLoading ? null : (
           <Routes>
             <Route path="/" exact element={<Home />} />

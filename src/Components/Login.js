@@ -1,38 +1,36 @@
 import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
-import { getUsers, handleInitialData } from "../actions/shared";
+import { getUsers } from "../actions/shared";
 import { useNavigate } from "react-router-dom";
-import { hideLoading, showLoading } from "react-redux-loading-bar";
 import { setAuthedUser } from "../actions/authedUser";
 
 const Login = (props) => {
   const selected = useRef("default");
-  const [loadedUsers, setLoadedUsers] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const navigate = useNavigate();
-  const { dispatch, users, isLoading } = props;
+  const { isLoading, dispatch, authedUser, users } = props;
 
   useEffect(() => {
     const loadUsers = async () => {
-      dispatch(showLoading());
-      try {
-        await dispatch(getUsers());
-      } finally {
-        console.log("Finished loading users", users);
-        dispatch(hideLoading());
-      }
+      setMounted(true);
+      await dispatch(getUsers());
     };
 
-    if (!loadedUsers) {
-      if (users.length === 0) {
+    console.log(authedUser);
+    if (authedUser === undefined) {
+      if (mounted === false) {
         loadUsers();
       }
-      setLoadedUsers(true);
     }
-  });
+
+    return () => {
+      setMounted(true);
+    };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(setAuthedUser(selected.current));
+    props.dispatch(setAuthedUser(selected.current));
     console.log("User logged in, navigating to home.");
     navigate("/");
   };
@@ -43,10 +41,16 @@ const Login = (props) => {
 
   return (
     <div className="login-page">
-      <h3>Login Page</h3>
       {isLoading ? null : (
-        <form onSubmit={handleSubmit}>
-          <select name="user" id="user" onChange={handleChange}>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <h3>Login Page</h3>
+          <select
+            name="user"
+            id="user"
+            className="user-select"
+            onChange={handleChange}
+            data-testid="user-select"
+          >
             <option value={selected}>Select User</option>
             {users.map((user) => (
               <option key={user} value={user}>
@@ -55,7 +59,12 @@ const Login = (props) => {
             ))}
           </select>
           <br />
-          <button className="btn" type="submit">
+          <button
+            className="btn"
+            type="submit"
+            disabled={selected.current === "selected" ? true : false}
+            data-testid="user-login-button"
+          >
             Submit
           </button>
         </form>

@@ -1,35 +1,48 @@
 import { connect } from "react-redux";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
-import Question from "./Question";
+// import Question from "./Question";
 
 const Home = (props) => {
-  const [initialData, setInitialData] = useState(false);
-  const { authedUser, dispatch, questionIds } = props;
+  const navigate = useNavigate();
+  const [mounted, setMounted] = useState(false);
+  const { authedUser, dispatch } = props;
 
   useEffect(() => {
-    const getInitialData = () => {
-      dispatch(handleInitialData());
-      setInitialData(true);
+    const navigateToLogin = async () => {
+      navigate("/login");
     };
-    if (initialData === false) {
-      if (authedUser !== null) {
-        getInitialData();
+
+    const loadHomePage = async () => {
+      setMounted(true);
+      dispatch(handleInitialData());
+    };
+
+    if (authedUser === null) {
+      navigateToLogin();
+    } else {
+      if (mounted === false) {
+        loadHomePage();
       }
     }
-  });
+
+    return () => {
+      setMounted(true);
+    };
+  }, []);
 
   return (
     <div>
       <h3 className="center">Your Poll Questions</h3>
-      <span>{initialData && authedUser}</span>
+      {/* <span>{authedUser}</span> */}
       <ul className="dashboard-list">
-        {initialData &&
+        {/* {initialData &&
           questionIds.map((id) => (
             <li key={id}>
               <Question id={id} />
             </li>
-          ))}
+          ))} */}
       </ul>
     </div>
   );

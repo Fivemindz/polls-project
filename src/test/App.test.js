@@ -1,8 +1,37 @@
-import { render, screen } from '@testing-library/react';
-import App from '../Components/App';
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { fireEvent, render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import reducer from "../reducers";
+import middleware from "../middleware";
+import App from "../Components/App";
 
+const store = createStore(reducer, middleware);
 
-test('renders learn react link', () => {
-  render(<App />);
-  screen.debug();
+describe("Test App Component", () => {
+  it("Snapshot:Renders the login page if user is not logged in", () => {
+    const component = render(
+      <Provider store={store}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
+    );
+    expect(component).toMatchSnapshot();
+  });
+  it("Snapshot: Renders HomePage once user is logged in", () => {
+    const component = render(
+      <Provider store={store}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
+    );
+    var select = component.getByTestId("user-select");
+    fireEvent.change(select, { target: { value: "tylermcginnis" } });
+    var submitButton = component.getByTestId("user-login-button");
+    fireEvent.click(submitButton);
+    expect(component).toMatchSnapshot();
+  });
 });

@@ -29,7 +29,7 @@ a {
 }
 
 .btn:hover {
-  border-color: rgba(0, 0, 0, 0.5);
+  border-color: blue;
   text-decoration: none;
 }
 
@@ -37,6 +37,9 @@ a {
   outline: 0;
   font-weight: 700;
   border-width: 2px;
+}
+.user-select {
+  height: 25px;
 }
 
 .center {
@@ -161,9 +164,19 @@ li {
   font-size: 20px;
   color: #c3392a;
 }
-
 .login-page {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.login-form {
+  border: 2px solid;
+  border-radius: 5%;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

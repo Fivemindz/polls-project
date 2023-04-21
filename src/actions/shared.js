@@ -17,8 +17,10 @@ export function handleInitialData() {
 
 export function getUsers() {
   return async (dispatch) => {
+    dispatch(showLoading());
     return loadUsers().then(({ users }) => {
       dispatch(receiveUsers(users));
+      dispatch(hideLoading());
     });
   };
 }
