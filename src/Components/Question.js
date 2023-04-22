@@ -11,11 +11,10 @@ const Question = (props) => {
   return (
     <div className="question">
       <div className="question-info">
-        <div>
-          <span>{author}</span>
-          <div>{formatDate(timestamp)}</div>
-        </div>
+        <div>{author}</div>
+        <div>{formatDate(timestamp)}</div>
       </div>
+      <div></div>
     </div>
   );
 };

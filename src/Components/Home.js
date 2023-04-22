@@ -1,30 +1,20 @@
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
-// import Question from "./Question";
+import Question from "./Question";
 
 const Home = (props) => {
-  const navigate = useNavigate();
   const [mounted, setMounted] = useState(false);
-  const { authedUser, dispatch } = props;
+  const { authedUser, dispatch, questionIds } = props;
 
   useEffect(() => {
-    const navigateToLogin = async () => {
-      navigate("/login");
-    };
-
     const loadHomePage = async () => {
-      setMounted(true);
       dispatch(handleInitialData());
+      setMounted(true);
     };
 
-    if (authedUser === null) {
-      navigateToLogin();
-    } else {
-      if (mounted === false) {
-        loadHomePage();
-      }
+    if (mounted === false) {
+      loadHomePage();
     }
 
     return () => {
@@ -34,16 +24,21 @@ const Home = (props) => {
 
   return (
     <div>
-      <h3 className="center">Your Poll Questions</h3>
-      {/* <span>{authedUser}</span> */}
-      <ul className="dashboard-list">
-        {/* {initialData &&
-          questionIds.map((id) => (
-            <li key={id}>
-              <Question id={id} />
-            </li>
-          ))} */}
-      </ul>
+      {questionIds && (
+        <div>
+          <h3 className="center">Your Poll Questions</h3>
+          <div className="container">
+            <span>{authedUser}</span>
+          </div>
+          <ul className="dashboard-list">
+            {questionIds.map((id) => (
+              <li key={id}>
+                <Question id={id} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

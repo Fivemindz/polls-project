@@ -1,30 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { getUsers } from "../actions/shared";
-import { useNavigate } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
+import Loading from "./Loading";
 
 const Login = (props) => {
   const selected = useRef("default");
-  const [mounted, setMounted] = useState(false);
-  const navigate = useNavigate();
-  const { isLoading, dispatch, authedUser, users } = props;
+  const [loading, setLoading] = useState(true);
+  const { dispatch, users } = props;
 
   useEffect(() => {
     const loadUsers = async () => {
-      setMounted(true);
       await dispatch(getUsers());
     };
 
-    console.log(authedUser);
-    if (authedUser === undefined) {
-      if (mounted === false) {
-        loadUsers();
-      }
+    if (loading === true) {
+      loadUsers();
+      setLoading(false);
     }
 
     return () => {
-      setMounted(true);
+      setLoading(false);
     };
   }, []);
 
@@ -32,7 +28,6 @@ const Login = (props) => {
     e.preventDefault();
     props.dispatch(setAuthedUser(selected.current));
     console.log("User logged in, navigating to home.");
-    navigate("/");
   };
 
   const handleChange = (e) => {
@@ -41,7 +36,9 @@ const Login = (props) => {
 
   return (
     <div className="login-page">
-      {isLoading ? null : (
+      {users.length === 0 ? (
+        <Loading type={"spin"} color={"blue"} />
+      ) : (
         <form className="login-form" onSubmit={handleSubmit}>
           <h3>Login Page</h3>
           <select

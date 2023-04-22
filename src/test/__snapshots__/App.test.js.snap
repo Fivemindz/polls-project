@@ -1,120 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test App Component Snapshot: Renders HomePage once user is logged in 1`] = `
-Object {
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <div
-        style="direction: ltr;"
-      >
-        <div
-          class=""
-          style="width: 0%; transition: width 800ms linear 0s; will-change: width, opacity; height: 3px; background-color: red; position: absolute; opacity: 0;"
-        />
-        <div
-          style="display: table; clear: both;"
-        />
-      </div>
-      <div
-        class="container"
-        data-testid="home-page"
-      >
-        <div>
-          <h3
-            class="center"
-          >
-            Your Poll Questions
-          </h3>
-          <ul
-            class="dashboard-list"
-          />
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      style="direction: ltr;"
-    >
-      <div
-        class=""
-        style="width: 0%; transition: width 800ms linear 0s; will-change: width, opacity; height: 3px; background-color: red; position: absolute; opacity: 0;"
-      />
-      <div
-        style="display: table; clear: both;"
-      />
-    </div>
-    <div
-      class="container"
-      data-testid="home-page"
-    >
-      <div>
-        <h3
-          class="center"
-        >
-          Your Poll Questions
-        </h3>
-        <ul
-          class="dashboard-list"
-        />
-      </div>
-    </div>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
-`;
-
 exports[`Test App Component Snapshot:Renders the login page if user is not logged in 1`] = `
 Object {
   "asFragment": [Function],
@@ -138,33 +23,43 @@ Object {
         <div
           class="login-page"
         >
-          <form
-            class="login-form"
+          <div
+            style="fill: blue; height: 200px; width: 75px;"
           >
-            <h3>
-              Login Page
-            </h3>
-            <select
-              class="user-select"
-              data-testid="user-select"
-              id="user"
-              name="user"
+            <svg
+              viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <option
-                value="[object Object]"
+              
+  
+              <path
+                d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"
+                opacity=".25"
+              />
+              
+  
+              <path
+                d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z"
               >
-                Select User
-              </option>
-            </select>
-            <br />
-            <button
-              class="btn"
-              data-testid="user-login-button"
-              type="submit"
-            >
-              Submit
-            </button>
-          </form>
+                
+    
+                <animatetransform
+                  attributeName="transform"
+                  dur="0.8s"
+                  from="0 16 16"
+                  repeatCount="indefinite"
+                  to="360 16 16"
+                  type="rotate"
+                />
+                
+  
+              </path>
+              
+
+            </svg>
+            
+
+          </div>
         </div>
       </div>
     </div>
@@ -188,33 +83,43 @@ Object {
       <div
         class="login-page"
       >
-        <form
-          class="login-form"
+        <div
+          style="fill: blue; height: 200px; width: 75px;"
         >
-          <h3>
-            Login Page
-          </h3>
-          <select
-            class="user-select"
-            data-testid="user-select"
-            id="user"
-            name="user"
+          <svg
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <option
-              value="[object Object]"
+            
+  
+            <path
+              d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"
+              opacity=".25"
+            />
+            
+  
+            <path
+              d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z"
             >
-              Select User
-            </option>
-          </select>
-          <br />
-          <button
-            class="btn"
-            data-testid="user-login-button"
-            type="submit"
-          >
-            Submit
-          </button>
-        </form>
+              
+    
+              <animatetransform
+                attributeName="transform"
+                dur="0.8s"
+                from="0 16 16"
+                repeatCount="indefinite"
+                to="360 16 16"
+                type="rotate"
+              />
+              
+  
+            </path>
+            
+
+          </svg>
+          
+
+        </div>
       </div>
     </div>
   </div>,

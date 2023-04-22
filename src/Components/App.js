@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import LoadingBar from "react-redux-loading-bar";
 import Home from "./Home";
@@ -6,13 +6,16 @@ import Login from "./Login";
 import { Routes, Route } from "react-router-dom";
 
 const App = (props) => {
-  const { isLoading } = props;
+  const { loading } = props;
+  useEffect(() => {}, [loading]);
 
   return (
     <Fragment>
       <LoadingBar />
       <div className="container" data-testid="home-page">
-        {isLoading ? null : (
+        {loading === true ? (
+          <Login />
+        ) : (
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/login" element={<Login />} />
