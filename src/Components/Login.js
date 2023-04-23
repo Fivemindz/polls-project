@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
-import { getUsers } from "../actions/shared";
+import { getUsers, handleInitialData } from "../actions/shared";
 import { setAuthedUser } from "../actions/authedUser";
 import Loading from "./Loading";
 
@@ -24,9 +24,10 @@ const Login = (props) => {
     };
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    props.dispatch(setAuthedUser(selected.current));
+    await dispatch(handleInitialData());
+    await dispatch(setAuthedUser(selected.current));
     console.log("User logged in, navigating to home.");
   };
 
