@@ -5,7 +5,32 @@
   color: #252525;
   border: 1px solid black;
 }
-
+.home-body {
+  border: 1px solid black;
+  height: 1000px;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-areas:
+    ". ban ban ban ban ban ."
+    ". nv mn mn mn mn ."
+    ". nv mn mn mn mn ."
+    ". nv mn mn mn mn ."
+    ". nv mn mn mn mn ."
+    ". nv mn mn mn mn .";
+}
+.user-banner {
+  border: 1px solid green;
+  grid-area: ban;
+}
+.nav-bar {
+  border: 1px solid blue;
+  grid-area: nv;
+}
+.main-app {
+  border: 1px solid red;
+  grid-area: mn;
+}
 a {
   text-decoration: none;
   color: #252525;

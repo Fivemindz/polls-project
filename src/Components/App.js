@@ -14,7 +14,7 @@ const App = (props) => {
       <LoadingBar />
       <div className="container" data-testid="home-page">
         {loading === true ? (
-          <Login />
+          <Home />
         ) : (
           <Routes>
             <Route path="/" exact element={<Home />} />
