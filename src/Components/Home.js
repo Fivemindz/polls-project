@@ -1,19 +1,10 @@
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
-import { handleInitialData } from "../actions/shared";
 import Question from "./Question";
 
 const Home = (props) => {
   const [mounted, setMounted] = useState(false);
-  const { questions, authedUser } = props;
-
-  const questionsArray = Object.values(questions);
-
-  const answeredQuestions = questionsArray.filter((question) => {
-    return question.author === authedUser;
-  });
-
-  console.log(answeredQuestions);
+  const { authedUser, answeredQuestions, unansweredQuestions } = props;
 
   useEffect(() => {
     const loadHomePage = async () => {
@@ -31,28 +22,46 @@ const Home = (props) => {
 
   return (
     <div>
-      {/* {questions && (
+      {answeredQuestions && (
         <div>
           <h3 className="center">Your Poll Questions</h3>
           <div className="container">
             <span>{authedUser}</span>
           </div>
-          <ul className="dashboard-list">
-            {questions.map((id) => (
-              <li key={id}>
-                <Question id={id} />
-              </li>
-            ))}
-          </ul>
+          <div className="container">
+            <h3 className="center">Answered Questions</h3>
+            <ul className="dashboard-list">
+              {answeredQuestions.map((question) => (
+                <li key={question.id}>
+                  <Question question={question} />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="container">
+            <h3 className="center">Unanswered Questions</h3>
+            <ul className="dashboard-list">
+              {unansweredQuestions.map((question) => (
+                <li key={question.id}>
+                  <Question question={question} />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      )} */}
+      )}
     </div>
   );
 };
 
-const mapStateToProps = ({ questions, authedUser }) => ({
-  questions,
+const mapStateToProps = ({ authedUser, questions }) => ({
   authedUser,
+  answeredQuestions: Object.values(questions).filter((question) => {
+    return question.optionOne.votes.includes(authedUser);
+  }),
+  unansweredQuestions: Object.values(questions).filter((question) => {
+    return !question.optionOne.votes.includes(authedUser);
+  }),
 });
 
 export default connect(mapStateToProps)(Home);

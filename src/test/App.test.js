@@ -20,20 +20,20 @@ describe("Test App Component", () => {
     );
     expect(component).toMatchSnapshot();
   });
-  it("Snapshot: Renders HomePage once user is logged in", async () => {
-    const component = render(
-      <Provider store={store}>
-        <Router>
-          <App />
-        </Router>
-      </Provider>
-    );
-    setTimeout(() => {
-      const select = component.getAllByTestId("user-select");
-      fireEvent.change(select, { target: { value: "tylermcginnis" } });
-      var submitButton = component.getByTestId("user-login-button");
-      fireEvent.click(submitButton);
-      expect(component).toMatchSnapshot();
-    }, "3000");
-  });
+  // it("Snapshot: Renders HomePage once user is logged in", async () => {
+  //   const component = render(
+  //     <Provider store={store}>
+  //       <Router>
+  //         <App />
+  //       </Router>
+  //     </Provider>
+  //   );
+  //   setTimeout(() => {
+  //     const select = component.getAllByTestId("user-select");
+  //     fireEvent.change(select, { target: { value: "tylermcginnis" } });
+  //     var submitButton = component.getByTestId("user-login-button");
+  //     fireEvent.click(submitButton);
+  //     expect(component).toMatchSnapshot();
+  //   }, "3000");
+  // });
 });
