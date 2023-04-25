@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getUsers, handleInitialData } from "../actions/shared";
 import { setAuthedUser } from "../actions/authedUser";
 import Loading from "./Loading";
 
 const Login = (props) => {
-  const selected = useRef("default");
+  const [selected, setSelected] = useState("default");
   const [loading, setLoading] = useState(true);
   const { dispatch, users } = props;
 
@@ -27,12 +27,13 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await dispatch(handleInitialData());
-    await dispatch(setAuthedUser(selected.current));
+    await dispatch(setAuthedUser(selected));
     console.log("User logged in, navigating to home.");
   };
 
   const handleChange = (e) => {
-    selected.current = e.target.value;
+    console.log(e.target.value);
+    setSelected(e.target.value);
   };
 
   return (
@@ -49,7 +50,7 @@ const Login = (props) => {
             onChange={handleChange}
             data-testid="user-select"
           >
-            <option value={selected}>Select User</option>
+            <option value="default">Select User</option>
             {users.map((user) => (
               <option key={user} value={user}>
                 {user}
@@ -60,7 +61,7 @@ const Login = (props) => {
           <button
             className="btn"
             type="submit"
-            disabled={selected.current === "selected" ? true : false}
+            disabled={selected === "default" ? true : false}
             data-testid="user-login-button"
           >
             Submit
