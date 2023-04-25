@@ -5,8 +5,7 @@
   color: #252525;
   border: 1px solid black;
 }
-.home-body {
-  border: 1px solid black;
+.dash-body {
   height: 1000px;
   display: grid;
   grid-template-rows: repeat(6, 1fr);
@@ -20,15 +19,15 @@
     ". nv mn mn mn mn .";
 }
 .user-banner {
-  border: 1px solid green;
+  border: 1px solid lightgray;
   grid-area: ban;
 }
-.nav-bar {
-  border: 1px solid blue;
+.nav {
+  border: 1px solid lightgray;
   grid-area: nv;
 }
-.main-app {
-  border: 1px solid red;
+.dashboard {
+  border: 1px solid lightgray;
   grid-area: mn;
 }
 a {
@@ -41,28 +40,38 @@ a {
   margin: 0 auto;
   padding: 10px;
 }
-
+.poll-selector {
+  display: flex;
+}
 .btn {
   text-transform: uppercase;
   margin: 35px auto;
   padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.29);
   cursor: pointer;
   background: #fff;
+  border-color: blue;
+  border-radius: 1px;
   font-size: 16px;
   width: 250px;
   position: relative;
 }
-
 .btn:hover {
   border-color: blue;
   text-decoration: none;
 }
-
 .btn:focus {
   outline: 0;
   font-weight: 700;
   border-width: 2px;
+}
+.btn-selector {
+  border: none;
+  background-color: none;
+  font-size: large;
+  padding: 20px;
+}
+.btn-selector:hover {
+  background-color: lightblue;
 }
 .user-select {
   height: 25px;
@@ -78,31 +87,29 @@ a {
 
 .nav ul {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
 }
-
-.nav li:first-child {
-  padding-left: 0;
-}
-
 ul {
   padding-left: 0;
+  margin-top: 0;
 }
-
 li {
   list-style-type: none;
   padding: 10px;
   text-decoration: none;
 }
-
+li:hover {
+  color: blue;
+  font-size: large;
+}
 .avatar {
   height: 50px;
   border-radius: 25px;
   margin: 10px;
 }
-
 .question {
   width: 100%;
   max-width: 590px;
@@ -112,7 +119,6 @@ li {
   border-radius: 3px;
   cursor: pointer;
 }
-
 .question-info {
   margin: 10px;
   display: flex;
