@@ -1,0 +1,8 @@
+.dashboard {
+  border: 1px solid lightgray;
+  grid-area: mn;
+}
+li:hover {
+  color: blue;
+  font-size: large;
+}

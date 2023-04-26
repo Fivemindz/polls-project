@@ -1,11 +1,12 @@
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import Question from "./Question";
+import "./Dash.css";
 
 const Dash = (props) => {
   const [mounted, setMounted] = useState(false);
   const [data, setData] = useState(null);
-  const { authedUser, answeredQuestions, unansweredQuestions } = props;
+  const { answeredQuestions, unansweredQuestions } = props;
 
   useEffect(() => {
     if (mounted === false) {
@@ -44,7 +45,6 @@ const Dash = (props) => {
             data.map((question) => {
               return (
                 <li className="question" key={question.id}>
-                  {" "}
                   <Question question={question} />
                 </li>
               );

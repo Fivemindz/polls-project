@@ -1,0 +1,14 @@
+.dash-body {
+  height: 1000px;
+  display: grid;
+  grid-template-rows: 200px auto;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-areas:
+    " ban ban ban ban ban ban ban"
+    "nv mn mn mn mn mn mn"
+    ;
+}
+.container {
+  margin: 10px 200px 5px 200px;
+  padding: 10px;
+}

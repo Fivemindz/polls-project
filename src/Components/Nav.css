@@ -1,0 +1,16 @@
+.nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.nav {
+  border: 1px solid lightgray;
+  grid-area: nv;
+}
+li {
+  list-style-type: none;
+  padding: 10px;
+  text-decoration: none;
+}

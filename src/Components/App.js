@@ -8,6 +8,7 @@ import Nav from "./Nav";
 import Dash from "./Dash";
 import Stats from "./Stats";
 import NewQuestion from "./NewQuestion";
+import "./App.css";
 
 const App = (props) => {
   const { loading } = props;

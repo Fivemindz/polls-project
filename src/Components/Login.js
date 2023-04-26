@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getUsers, handleInitialData } from "../actions/shared";
 import { setAuthedUser } from "../actions/authedUser";
 import Loading from "./Loading";
+import "./Login.css";
 
 const Login = (props) => {
   const [selected, setSelected] = useState("default");
