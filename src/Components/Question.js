@@ -6,8 +6,8 @@ const Question = ({ question }) => {
   return (
     <div>
       <div className="question-info">
-        <div>{question.author}</div>
-        <div>{formatDate(question.timestamp)}</div>
+        <div className="question-author">{question.author}</div>
+        <div className="question-date">{formatDate(question.timestamp)}</div>
       </div>
       <div></div>
     </div>

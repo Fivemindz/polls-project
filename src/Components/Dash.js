@@ -9,9 +9,9 @@ const Dash = (props) => {
 
   useEffect(() => {
     if (data === null) {
-      setData(answeredQuestions);
+      setData(unansweredQuestions);
     }
-  }, [data, answeredQuestions]);
+  }, [data, unansweredQuestions]);
 
   const updateQuestions = (e, dataset) => {
     document.getElementsByClassName("btn-selector-active")[0].className =
@@ -25,20 +25,20 @@ const Dash = (props) => {
       <div className="poll-selector">
         <button
           className="btn-selector-active"
-          onClick={(e) => updateQuestions(e, answeredQuestions)}
-        >
-          Answered
-        </button>
-        <div className="poll-seperator">|</div>
-        <button
-          className="btn-selector"
           onClick={(e) => updateQuestions(e, unansweredQuestions)}
         >
           Unanswered
         </button>
+        <div className="poll-seperator">|</div>
+        <button
+          className="btn-selector"
+          onClick={(e) => updateQuestions(e, answeredQuestions)}
+        >
+          Answered
+        </button>
       </div>
-      <div className="polls-table">
-        <ul>
+      <div>
+        <ul className="polls-table">
           {data &&
             data.map((question) => {
               return (
