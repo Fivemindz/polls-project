@@ -4,7 +4,7 @@ import "./Question.css";
 
 const Question = ({ question }) => {
   return (
-    <div className="question">
+    <div>
       <div className="question-info">
         <div>{question.author}</div>
         <div>{formatDate(question.timestamp)}</div>

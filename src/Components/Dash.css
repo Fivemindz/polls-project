@@ -6,3 +6,32 @@ li:hover {
   color: blue;
   font-size: large;
 }
+.poll-selector{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.poll-seperator{
+  width: 50px;
+  text-align: center;
+}
+.btn-selector{
+  border: 1px solid black;
+  background-color: white;
+  font-size: larger;
+  border-radius: 5px;
+}
+.btn-selector-active{
+  border: 1px solid black;
+  background-color: blue;
+  color: white;
+  font-size: larger;
+  border-radius: 5px;
+}
+.btn-selector:hover{
+  border: 2px solid blue;
+}
+.polls-table{
+  display: flex;
+}

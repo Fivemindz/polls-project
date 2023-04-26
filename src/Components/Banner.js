@@ -4,7 +4,7 @@ import { setAuthedUser } from "../actions/authedUser";
 import "./Banner.css";
 
 const Banner = (props) => {
-  const { dispatch } = props;
+  const { authedUser, userPic, dispatch } = props;
 
   const handleSignOut = () => {
     dispatch(setAuthedUser(null));
@@ -12,7 +12,10 @@ const Banner = (props) => {
 
   return (
     <div className="user-banner">
-      <div className="user-info"></div>
+      <div className="user-info">
+        <img src={userPic} alt="avatar" className="avatar" />
+        <div className="user-name"> {authedUser}</div>
+      </div>
       <div className="banner-spacer"></div>
       <div className="btn-container">
         <button className="sign-out-btn" onClick={handleSignOut}>
@@ -23,4 +26,9 @@ const Banner = (props) => {
   );
 };
 
-export default connect()(Banner);
+const mapStateToProps = ({ authedUser, users }) => ({
+  authedUser,
+  userPic: users[authedUser].avatarURL,
+});
+
+export default connect(mapStateToProps)(Banner);

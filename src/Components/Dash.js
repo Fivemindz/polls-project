@@ -4,22 +4,19 @@ import Question from "./Question";
 import "./Dash.css";
 
 const Dash = (props) => {
-  const [mounted, setMounted] = useState(false);
   const [data, setData] = useState(null);
   const { answeredQuestions, unansweredQuestions } = props;
 
   useEffect(() => {
-    if (mounted === false) {
-      setMounted(true);
-      updateQuestions(answeredQuestions);
+    if (data === null) {
+      setData(answeredQuestions);
     }
+  }, [data, answeredQuestions]);
 
-    return () => {
-      setMounted(true);
-    };
-  }, []);
-
-  const updateQuestions = (dataset) => {
+  const updateQuestions = (e, dataset) => {
+    document.getElementsByClassName("btn-selector-active")[0].className =
+      "btn-selector";
+    e.target.className = "btn-selector-active";
     setData(dataset);
   };
 
@@ -27,19 +24,20 @@ const Dash = (props) => {
     <div className="dashboard">
       <div className="poll-selector">
         <button
-          className="btn-selector"
-          onClick={() => updateQuestions(answeredQuestions)}
+          className="btn-selector-active"
+          onClick={(e) => updateQuestions(e, answeredQuestions)}
         >
           Answered
         </button>
+        <div className="poll-seperator">|</div>
         <button
           className="btn-selector"
-          onClick={() => updateQuestions(unansweredQuestions)}
+          onClick={(e) => updateQuestions(e, unansweredQuestions)}
         >
           Unanswered
         </button>
       </div>
-      <div className="center">
+      <div className="polls-table">
         <ul>
           {data &&
             data.map((question) => {
