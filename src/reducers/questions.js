@@ -12,12 +12,9 @@ export default function questions(state = {}, action) {
         ...action.questions,
       };
     case SAVE_QUESTION:
-      const { question } = action;
-
       return {
         ...state,
-        [action.OptionOneText]: action.OptionOneText,
-        [action.OptionTwoText]: action.OptionTwoText,
+        [action.question.id]: action.question,
       };
     default:
       return state;

@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import LoadingBar from "react-redux-loading-bar";
 import Login from "./Login";
@@ -9,10 +9,26 @@ import Dash from "./Dash";
 import Stats from "./Stats";
 import NewQuestion from "./NewQuestion";
 import "./App.css";
+import { getUsers } from "../actions/shared";
 
 const App = (props) => {
-  const { loading } = props;
-  useEffect(() => {}, [loading]);
+  const { loading, dispatch } = props;
+  const [usersLoaded, setUsersLoaded] = useState(false);
+
+  useEffect(() => {
+    const handleLoadUsers = async () => {
+      await dispatch(getUsers());
+      setUsersLoaded(true);
+    };
+
+    if (usersLoaded === false) {
+      handleLoadUsers();
+    }
+
+    return () => {
+      setUsersLoaded(true);
+    };
+  });
 
   return (
     <Fragment>

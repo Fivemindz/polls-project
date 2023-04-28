@@ -4,14 +4,24 @@ import Question from "./Question";
 import "./Dash.css";
 
 const Dash = (props) => {
-  const [data, setData] = useState(null);
-  const { answeredQuestions, unansweredQuestions } = props;
+  const [data, setData] = useState();
+  const [dataLoaded, setDataLoaded] = useState(false);
+  const { answeredQuestions, unansweredQuestions, loadingBar } = props;
 
   useEffect(() => {
-    if (data === null) {
+    const handleLoadData = () => {
       setData(unansweredQuestions);
+      setDataLoaded(true);
+    };
+
+    if (dataLoaded === false && data === undefined) {
+      handleLoadData();
     }
-  }, [data, unansweredQuestions]);
+
+    return () => {
+      setDataLoaded(true);
+    };
+  });
 
   const updateQuestions = (e, dataset) => {
     document.getElementsByClassName("btn-selector-active")[0].className =
@@ -38,16 +48,18 @@ const Dash = (props) => {
         </button>
       </div>
       <div>
-        <ul className="polls-table">
-          {data &&
-            data.map((question) => {
-              return (
-                <li className="question" key={question.id}>
-                  <Question question={question} />
-                </li>
-              );
-            })}
-        </ul>
+        {loadingBar ? null : (
+          <ul className="polls-table">
+            {data &&
+              data.map((question) => {
+                return (
+                  <li className="question" key={question.id}>
+                    <Question question={question} />
+                  </li>
+                );
+              })}
+          </ul>
+        )}
       </div>
     </div>
   );

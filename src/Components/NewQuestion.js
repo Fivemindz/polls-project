@@ -1,17 +1,26 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
 import "./NewQuestion.css";
+import { handleAddQuestion } from "../actions/questions";
+import { useNavigate } from "react-router-dom";
 
 const NewQuestion = (props) => {
-  const { authedUser, userPic } = props;
+  const { authedUser, userPic, dispatch } = props;
 
-  const [answer1, setAnswer1] = useState();
-  const [answer2, setAnswer2] = useState();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {};
+  const optionOneText = useRef("");
+  const optionTwoText = useRef("");
 
-  const handleChange = (e) => {
-    console.log(e.target.id);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await dispatch(
+      handleAddQuestion(optionOneText.current, optionTwoText.current)
+    );
+    optionOneText.current = "";
+    optionTwoText.current = "";
+
+    navigate("/");
   };
 
   return (
@@ -21,16 +30,28 @@ const NewQuestion = (props) => {
       <span></span>
       <form className="new-question-form" onSubmit={handleSubmit}>
         <h3>Would You Rather?</h3>
-        <textarea
-          id="answer1"
-          value={answer1}
-          onChange={handleChange}
-        ></textarea>
-        <textarea
-          id="answer2"
-          value={answer2}
-          onChange={handleChange}
-        ></textarea>
+        <div className="question-area">
+          <label>Answer 1</label>
+          <textarea
+            id="optionOneText"
+            onChange={(e) => (optionOneText.current = e.target.value)}
+          />
+          <label>Answer 2</label>
+          <textarea
+            id="optionTwoText"
+            onChange={(e) => (optionTwoText.current = e.target.value)}
+          />
+        </div>
+        <button
+          className="question-submit-btn"
+          type="submit"
+          disabled={
+            optionOneText.current.length !== 0 ||
+            optionTwoText.current.length !== 0
+          }
+        >
+          Submit
+        </button>
       </form>
     </div>
   );

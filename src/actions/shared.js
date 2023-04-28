@@ -4,12 +4,13 @@ import { receiveQuestions } from "./questions";
 import { setAuthedUser } from "./authedUser";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
-export function handleInitialData() {
+export function handleInitialData(user) {
   return async (dispatch) => {
     dispatch(showLoading());
     return await getInitialData().then(({ users, questions }) => {
       dispatch(receiveUsers(users));
       dispatch(receiveQuestions(questions));
+      dispatch(setAuthedUser(user));
       dispatch(hideLoading());
     });
   };
@@ -22,11 +23,5 @@ export function getUsers() {
       dispatch(receiveUsers(users));
       dispatch(hideLoading());
     });
-  };
-}
-
-export function setUser(user) {
-  return async (dispatch, user) => {
-    dispatch(setAuthedUser(user));
   };
 }

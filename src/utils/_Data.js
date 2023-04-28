@@ -179,7 +179,6 @@ export function _saveQuestion(question) {
         ...questions,
         [formattedQuestion.id]: formattedQuestion,
       };
-
       resolve(formattedQuestion);
     }, 1000);
   });
