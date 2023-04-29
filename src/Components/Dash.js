@@ -6,11 +6,11 @@ import "./Dash.css";
 const Dash = (props) => {
   const [data, setData] = useState();
   const [dataLoaded, setDataLoaded] = useState(false);
-  const { answeredQuestions, unansweredQuestions, loadingBar } = props;
+  const { answered, unanswered, loadingBar } = props;
 
   useEffect(() => {
     const handleLoadData = () => {
-      setData(unansweredQuestions);
+      setData(unanswered);
       setDataLoaded(true);
     };
 
@@ -35,14 +35,14 @@ const Dash = (props) => {
       <div className="poll-selector">
         <button
           className="btn-selector-active"
-          onClick={(e) => updateQuestions(e, unansweredQuestions)}
+          onClick={(e) => updateQuestions(e, unanswered)}
         >
           Unanswered
         </button>
         <div className="poll-seperator">|</div>
         <button
           className="btn-selector"
-          onClick={(e) => updateQuestions(e, answeredQuestions)}
+          onClick={(e) => updateQuestions(e, answered)}
         >
           Answered
         </button>
@@ -65,14 +65,27 @@ const Dash = (props) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, questions }) => ({
-  authedUser,
-  answeredQuestions: Object.values(questions).filter((question) => {
-    return question.optionOne.votes.includes(authedUser);
-  }),
-  unansweredQuestions: Object.values(questions).filter((question) => {
-    return !question.optionOne.votes.includes(authedUser);
-  }),
-});
+const mapStateToProps = ({ authedUser, questions }) => {
+  const answered = Object.values(questions)
+    .filter((question) => {
+      return question.optionOne.votes.includes(authedUser);
+    })
+    .sort((a, b) => {
+      return b.timestamp - a.timestamp;
+    });
+  const unanswered = Object.values(questions)
+    .filter((question) => {
+      return !question.optionOne.votes.includes(authedUser);
+    })
+    .sort((a, b) => {
+      return b.timestamp - a.timestamp;
+    });
+
+  return {
+    authedUser,
+    answered,
+    unanswered,
+  };
+};
 
 export default connect(mapStateToProps)(Dash);

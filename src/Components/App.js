@@ -10,6 +10,7 @@ import Stats from "./Stats";
 import NewQuestion from "./NewQuestion";
 import "./App.css";
 import { getUsers } from "../actions/shared";
+import QuestionPage from "./QuestionPage";
 
 const App = (props) => {
   const { loading, dispatch } = props;
@@ -44,6 +45,7 @@ const App = (props) => {
               <Route path="/" exact element={<Dash />} />
               <Route path="/stats" element={<Stats />} />
               <Route path="/newquestion" element={<NewQuestion />} />
+              <Route path="/question/:id" element={<QuestionPage />} />
             </Routes>
           </div>
         )}

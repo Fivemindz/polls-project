@@ -1,12 +1,24 @@
+a {
+  text-decoration: none;
+  color: black;
+}
 .question-info{
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 25px;
+  height: 100%;
+  width: 100%;
 }
 .question-author{
   font-size: larger;
   font-weight: bold;
   margin-bottom: 10px;
   font-family: display;
+  text-decoration: none;
+}
+.view-question-btn{
+  margin: 20px;
+  width: auto;
+  text-decoration: none;
 }

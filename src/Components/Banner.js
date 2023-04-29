@@ -2,12 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
 import "./Banner.css";
+import { useNavigate } from "react-router-dom";
 
 const Banner = (props) => {
   const { authedUser, userPic, dispatch } = props;
+  const navigate = useNavigate();
 
   const handleSignOut = () => {
     dispatch(setAuthedUser(null));
+    navigate("/");
   };
 
   return (
