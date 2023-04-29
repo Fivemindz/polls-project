@@ -15,38 +15,72 @@ const withRouter = (Component) => {
 };
 
 const QuestionPage = (props) => {
-  const { question, authorPic, authedUser } = props;
+  const { question, authorInfo, authedUserInfo } = props;
 
-  console.log(question.optionOne.votes.includes(authedUser));
-  console.log(question.optionTwo.votes.includes(authedUser));
+  const answerIds = Object.keys(authedUserInfo.answers);
+  let needanswer = false;
+  let answer = "none";
 
-  if (
-    !question.optionOne.votes.includes(authedUser) &&
-    !question.optionTwo.votes.includes(authedUser)
-  ) {
-    console.log("question not answered by authed user");
+  if (!answerIds.includes(question.id)) {
+    needanswer = true;
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(answer);
+  };
+
+  const updateOption = (e, option) => {
+    Array.from(document.querySelectorAll("input[type=checkbox]")).forEach(
+      (el) => (el.checked = false)
+    );
+    document.getElementById(option).checked = true;
+    answer = option;
+  };
 
   return (
     <div className="view-question">
       <h2>View Poll by {question.author} </h2>
-      <img src={`.${authorPic}`} alt="avatar" className="author-avatar" />
-      <form className="view-question-form">
+      <img
+        src={`.${authorInfo.avatarURL}`}
+        alt="avatar"
+        className="author-avatar"
+      />
+      <form className="view-question-form" onSubmit={handleSubmit}>
         <h3>Would You Rather?</h3>
         <div className="question-area">
           <label>Answer 1</label>
-          <textarea
-            id="optionOneText"
-            readOnly={true}
-            value={question.optionOne.text}
-          />
+          <div className="answer-select">
+            {needanswer && (
+              <input
+                id="optionOne"
+                type="checkbox"
+                onClick={(e) => updateOption(e, "optionOne")}
+              />
+            )}
+            <textarea
+              id="optionOneText"
+              readOnly={true}
+              value={question.optionOne.text}
+            />
+          </div>
           <label>Answer 2</label>
-          <textarea
-            id="optionTwoText"
-            readOnly={true}
-            value={question.optionTwo.text}
-          />
+          <div className="answer-select">
+            {needanswer && (
+              <input
+                id="optionTwo"
+                type="checkbox"
+                onClick={(e) => updateOption(e, "optionTwo")}
+              />
+            )}
+            <textarea
+              id="optionTwoText"
+              readOnly={true}
+              value={question.optionTwo.text}
+            />
+          </div>
         </div>
+        {needanswer && <button type="submit">Submit Answer</button>}
       </form>
     </div>
   );
@@ -58,8 +92,8 @@ const mapStateToProps = ({ questions, users, authedUser }, props) => {
 
   return {
     question: questions[id],
-    authorPic: users[author].avatarURL,
-    authedUser,
+    authorInfo: users[author],
+    authedUserInfo: users[authedUser],
   };
 };
 

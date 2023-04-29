@@ -1,7 +1,11 @@
-.view-question{
+.view-question {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   grid-area: mn;
+}
+.answer-select {
+  display: flex;
+  align-items: center;
 }
