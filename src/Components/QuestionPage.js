@@ -15,38 +15,51 @@ const withRouter = (Component) => {
 };
 
 const QuestionPage = (props) => {
-  const { question, authorPic } = props;
-  console.log(authorPic);
+  const { question, authorPic, authedUser } = props;
+
+  console.log(question.optionOne.votes.includes(authedUser));
+  console.log(question.optionTwo.votes.includes(authedUser));
+
+  if (
+    !question.optionOne.votes.includes(authedUser) &&
+    !question.optionTwo.votes.includes(authedUser)
+  ) {
+    console.log("question not answered by authed user");
+  }
 
   return (
     <div className="view-question">
       <h2>View Poll by {question.author} </h2>
       <img src={`.${authorPic}`} alt="avatar" className="author-avatar" />
-      <span></span>
       <form className="view-question-form">
         <h3>Would You Rather?</h3>
         <div className="question-area">
           <label>Answer 1</label>
-          <textarea id="optionOneText" readOnly="true">
-            {question.optionOne.text}
-          </textarea>
+          <textarea
+            id="optionOneText"
+            readOnly={true}
+            value={question.optionOne.text}
+          />
           <label>Answer 2</label>
-          <textarea id="optionTwoText" readOnly="true">
-            {question.optionTwo.text}
-          </textarea>
+          <textarea
+            id="optionTwoText"
+            readOnly={true}
+            value={question.optionTwo.text}
+          />
         </div>
       </form>
     </div>
   );
 };
 
-const mapStateToProps = ({ questions, users }, props) => {
+const mapStateToProps = ({ questions, users, authedUser }, props) => {
   const { id } = props.router.params;
   const author = questions[id].author;
 
   return {
     question: questions[id],
     authorPic: users[author].avatarURL,
+    authedUser,
   };
 };
 

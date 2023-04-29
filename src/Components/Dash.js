@@ -17,7 +17,7 @@ const Dash = (props) => {
     if (dataLoaded === false && data === undefined) {
       handleLoadData();
     }
-
+    console.log("Dash Rerender");
     return () => {
       setDataLoaded(true);
     };
@@ -65,17 +65,27 @@ const Dash = (props) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, questions }) => {
-  const answered = Object.values(questions)
+const mapStateToProps = ({ authedUser, questions, users }) => {
+  const questionIds = Object.keys(questions);
+  const answerIds = Object.keys(users[authedUser].answers);
+
+  const answered = questionIds
     .filter((question) => {
-      return question.optionOne.votes.includes(authedUser);
+      return answerIds.includes(question);
+    })
+    .map((question) => {
+      return questions[question];
     })
     .sort((a, b) => {
       return b.timestamp - a.timestamp;
     });
-  const unanswered = Object.values(questions)
+
+  const unanswered = questionIds
     .filter((question) => {
-      return !question.optionOne.votes.includes(authedUser);
+      return !answerIds.includes(question);
+    })
+    .map((question) => {
+      return questions[question];
     })
     .sort((a, b) => {
       return b.timestamp - a.timestamp;
