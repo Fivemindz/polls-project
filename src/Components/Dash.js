@@ -12,7 +12,7 @@ const Dash = (props) => {
       setData(unanswered);
     };
 
-    if (!data || loadingBar.default) {
+    if (!data || !loadingBar) {
       updateData();
     }
   });

@@ -11,9 +11,10 @@ import NewQuestion from "./NewQuestion";
 import "./App.css";
 import { getUsers } from "../actions/shared";
 import QuestionPage from "./QuestionPage";
+import Loading from "./Loading";
 
 const App = (props) => {
-  const { loading, dispatch } = props;
+  const { loading, dispatch, loadingBar } = props;
   const [usersLoaded, setUsersLoaded] = useState(false);
 
   useEffect(() => {
@@ -41,12 +42,18 @@ const App = (props) => {
           <div className="dash-body">
             <Banner />
             <Nav />
-            <Routes>
-              <Route path="/" exact element={<Dash />} />
-              <Route path="/stats" element={<Stats />} />
-              <Route path="/newquestion" element={<NewQuestion />} />
-              <Route path="/question/:id" element={<QuestionPage />} />
-            </Routes>
+            {loadingBar.default ? (
+              <div className="dash-loading">
+                <Loading />
+              </div>
+            ) : (
+              <Routes>
+                <Route path="/" exact element={<Dash />} />
+                <Route path="/stats" element={<Stats />} />
+                <Route path="/newquestion" element={<NewQuestion />} />
+                <Route path="/question/:id" element={<QuestionPage />} />
+              </Routes>
+            )}
           </div>
         )}
       </div>
@@ -54,8 +61,9 @@ const App = (props) => {
   );
 };
 
-const mapStateToProps = ({ authedUser }) => ({
+const mapStateToProps = ({ authedUser, loadingBar }) => ({
   loading: authedUser === null,
+  loadingBar,
 });
 
 export default connect(mapStateToProps)(App);
