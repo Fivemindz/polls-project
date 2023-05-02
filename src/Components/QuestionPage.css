@@ -9,3 +9,15 @@
   display: flex;
   align-items: center;
 }
+.stats {
+  display: flex;
+}
+.stats div {
+  margin-right: 15px;
+}
+.answer {
+  color: green;
+  font-weight: bold;
+  font-size: larger;
+  margin-top: 20px;
+}

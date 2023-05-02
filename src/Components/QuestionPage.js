@@ -1,8 +1,8 @@
-import React from "react";
 import { connect } from "react-redux";
 import "./QuestionPage.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { handleAddQuestionAnswer } from "../actions/shared";
+import Redirector from "./Redirector";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -17,14 +17,33 @@ const withRouter = (Component) => {
 
 const QuestionPage = (props) => {
   const { question, authorInfo, authedUserInfo, dispatch } = props;
-  const navigate = useNavigate();
+
+  if (!authorInfo) {
+    return <Redirector />;
+  }
 
   const answerIds = Object.keys(authedUserInfo.answers);
   let needanswer = false;
+  let showStats = true;
   let answer = "none";
+
+  let answer1Count = question.optionOne.votes.length;
+  let answer2Count = question.optionTwo.votes.length;
+  let answeredCount = answer1Count + answer2Count;
+  let answer1 = false;
+  let answer2 = false;
 
   if (!answerIds.includes(question.id)) {
     needanswer = true;
+    showStats = false;
+  }
+
+  if (answerIds.includes(question.id)) {
+    if (question.optionOne.votes.includes(authorInfo.id)) {
+      answer1 = true;
+    } else {
+      answer2 = true;
+    }
   }
 
   const handleSubmit = (e) => {
@@ -36,7 +55,7 @@ const QuestionPage = (props) => {
         answer,
       })
     );
-    navigate("/");
+    showStats = true;
   };
 
   const updateOption = (e, option) => {
@@ -59,6 +78,7 @@ const QuestionPage = (props) => {
         <h3>Would You Rather?</h3>
         <div className="question-area">
           <label>Answer 1</label>
+          {answer1 && <div className="answer">Your Answer</div>}
           <div className="answer-select">
             {needanswer && (
               <input
@@ -67,13 +87,26 @@ const QuestionPage = (props) => {
                 onClick={(e) => updateOption(e, "optionOne")}
               />
             )}
+
             <textarea
               id="optionOneText"
               readOnly={true}
               value={question.optionOne.text}
             />
+            {showStats && (
+              <div className="stats">
+                <div>{(answer1Count / answeredCount).toFixed(2) * 100}%</div>
+                <div>
+                  {" "}
+                  {answer1Count === 1
+                    ? `${answer1Count} vote`
+                    : `${answer1Count} votes`}
+                </div>
+              </div>
+            )}
           </div>
           <label>Answer 2</label>
+          {answer2 && <div className="answer">Your Answer</div>}
           <div className="answer-select">
             {needanswer && (
               <input
@@ -87,6 +120,17 @@ const QuestionPage = (props) => {
               readOnly={true}
               value={question.optionTwo.text}
             />
+            {showStats && (
+              <div className="stats">
+                <div>{(answer2Count / answeredCount).toFixed(2) * 100}%</div>
+                <div>
+                  {" "}
+                  {answer2Count === 1
+                    ? `${answer2Count} vote`
+                    : `${answer2Count} votes`}
+                </div>
+              </div>
+            )}
           </div>
         </div>
         {needanswer && <button type="submit">Submit Answer</button>}
@@ -97,7 +141,7 @@ const QuestionPage = (props) => {
 
 const mapStateToProps = ({ questions, users, authedUser }, props) => {
   const { id } = props.router.params;
-  const author = questions[id].author;
+  const author = !questions[id] ? null : questions[id].author;
 
   return {
     question: questions[id],

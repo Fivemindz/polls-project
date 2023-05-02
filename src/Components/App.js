@@ -12,6 +12,7 @@ import "./App.css";
 import { getUsers } from "../actions/shared";
 import QuestionPage from "./QuestionPage";
 import Loading from "./Loading";
+import PageNotFound from "./PageNotFound";
 
 const App = (props) => {
   const { loading, dispatch, loadingBar } = props;
@@ -52,6 +53,7 @@ const App = (props) => {
                 <Route path="/stats" element={<Stats />} />
                 <Route path="/newquestion" element={<NewQuestion />} />
                 <Route path="/question/:id" element={<QuestionPage />} />
+                <Route path="/notfound" element={<PageNotFound />} />
               </Routes>
             )}
           </div>
