@@ -4,23 +4,17 @@ import Question from "./Question";
 import "./Dash.css";
 
 const Dash = (props) => {
-  const [data, setData] = useState();
-  const [dataLoaded, setDataLoaded] = useState(false);
   const { answered, unanswered, loadingBar } = props;
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    const handleLoadData = () => {
+    const updateData = () => {
       setData(unanswered);
-      setDataLoaded(true);
     };
 
-    if (dataLoaded === false && data === undefined) {
-      handleLoadData();
+    if (!data || loadingBar.default) {
+      updateData();
     }
-    console.log("Dash Rerender");
-    return () => {
-      setDataLoaded(true);
-    };
   });
 
   const updateQuestions = (e, dataset) => {
@@ -32,23 +26,23 @@ const Dash = (props) => {
 
   return (
     <div className="dashboard">
-      <div className="poll-selector">
-        <button
-          className="btn-selector-active"
-          onClick={(e) => updateQuestions(e, unanswered)}
-        >
-          Unanswered
-        </button>
-        <div className="poll-seperator">|</div>
-        <button
-          className="btn-selector"
-          onClick={(e) => updateQuestions(e, answered)}
-        >
-          Answered
-        </button>
-      </div>
       <div>
-        {loadingBar ? null : (
+        <div className="poll-selector">
+          <button
+            className="btn-selector-active"
+            onClick={(e) => updateQuestions(e, unanswered)}
+          >
+            Unanswered
+          </button>
+          <div className="poll-seperator">|</div>
+          <button
+            className="btn-selector"
+            onClick={(e) => updateQuestions(e, answered)}
+          >
+            Answered
+          </button>
+        </div>
+        <div>
           <ul className="polls-table">
             {data &&
               data.map((question) => {
@@ -59,19 +53,19 @@ const Dash = (props) => {
                 );
               })}
           </ul>
-        )}
+        </div>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = ({ authedUser, questions, users }) => {
+const mapStateToProps = ({ questions, users, authedUser, loadingBar }) => {
   const questionIds = Object.keys(questions);
-  const answerIds = Object.keys(users[authedUser].answers);
+  const answeredQuestionIds = Object.keys(users[authedUser].answers);
 
   const answered = questionIds
     .filter((question) => {
-      return answerIds.includes(question);
+      return answeredQuestionIds.includes(question);
     })
     .map((question) => {
       return questions[question];
@@ -82,7 +76,7 @@ const mapStateToProps = ({ authedUser, questions, users }) => {
 
   const unanswered = questionIds
     .filter((question) => {
-      return !answerIds.includes(question);
+      return !answeredQuestionIds.includes(question);
     })
     .map((question) => {
       return questions[question];
@@ -92,9 +86,10 @@ const mapStateToProps = ({ authedUser, questions, users }) => {
     });
 
   return {
-    authedUser,
     answered,
     unanswered,
+    authedUser,
+    loadingBar,
   };
 };
 

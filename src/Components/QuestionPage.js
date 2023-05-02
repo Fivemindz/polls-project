@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import "./QuestionPage.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { handleAddQuestionAnswer } from "../actions/shared";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -15,7 +16,8 @@ const withRouter = (Component) => {
 };
 
 const QuestionPage = (props) => {
-  const { question, authorInfo, authedUserInfo } = props;
+  const { question, authorInfo, authedUserInfo, dispatch } = props;
+  const navigate = useNavigate();
 
   const answerIds = Object.keys(authedUserInfo.answers);
   let needanswer = false;
@@ -27,7 +29,14 @@ const QuestionPage = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(answer);
+    dispatch(
+      handleAddQuestionAnswer({
+        authedUser: authedUserInfo.id,
+        qid: question.id,
+        answer,
+      })
+    );
+    navigate("/");
   };
 
   const updateOption = (e, option) => {
