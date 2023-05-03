@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { connect } from "react-redux";
 import "./NewQuestion.css";
-import { handleAddQuestion } from "../actions/questions";
+import { handleAddQuestion } from "../actions/shared";
 import { useNavigate } from "react-router-dom";
 
 const NewQuestion = (props) => {

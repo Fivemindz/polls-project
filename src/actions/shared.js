@@ -1,9 +1,9 @@
 import { getInitialData, loadUsers } from "../utils/api";
-import { addAnswer, receiveUsers } from "./users";
-import { addQuestionAnswer, receiveQuestions } from "./questions";
+import { receiveUsers } from "./users";
+import { addQuestion, addQuestionAnswer, receiveQuestions } from "./questions";
 import { setAuthedUser } from "./authedUser";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
-import { saveQuestionAnswer } from "../utils/api";
+import { saveQuestion, saveQuestionAnswer } from "../utils/api";
 
 export function handleInitialData(user) {
   return async (dispatch) => {
@@ -20,10 +20,28 @@ export function handleInitialData(user) {
 export function getUsers() {
   return async (dispatch) => {
     dispatch(showLoading());
-    return loadUsers().then(({ users }) => {
-      dispatch(receiveUsers(users));
+    return loadUsers().then(async ({ users }) => {
+      await dispatch(receiveUsers(users));
       dispatch(hideLoading());
     });
+  };
+}
+
+export function handleAddQuestion(optionOneText, optionTwoText) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+
+    dispatch(showLoading());
+
+    return saveQuestion({
+      optionOneText,
+      optionTwoText,
+      author: authedUser,
+    })
+      .then((question) => {
+        dispatch(addQuestion(question));
+      })
+      .then(() => dispatch(hideLoading()));
   };
 }
 
@@ -32,7 +50,6 @@ export function handleAddQuestionAnswer(info) {
     dispatch(showLoading());
     return saveQuestionAnswer(info).then(async () => {
       await dispatch(addQuestionAnswer(info));
-      await dispatch(addAnswer(info));
       dispatch(hideLoading());
     });
   };
