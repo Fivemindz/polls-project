@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test NewQuestion component  Snapshot: Renders the NewQuesion form 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="new-question"
+      >
+        <h2>
+          New Poll by 
+          tylermcginnis
+           
+        </h2>
+        <img
+          alt="avatar"
+          class="avatar"
+          src="./avatars/tyler.jpg"
+        />
+        <span />
+        <form
+          class="new-question-form"
+          data-testid="new-question-form"
+        >
+          <h3>
+            Would You Rather?
+          </h3>
+          <div
+            class="question-area"
+          >
+            <label>
+              Answer 1
+            </label>
+            <textarea
+              data-testid="question-text-1"
+              id="optionOneText"
+            />
+            <label>
+              Answer 2
+            </label>
+            <textarea
+              data-testid="question-text-2"
+              id="optionTwoText"
+            />
+          </div>
+          <button
+            class="question-submit-btn"
+            data-testid="question-submit-btn"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="new-question"
+    >
+      <h2>
+        New Poll by 
+        tylermcginnis
+         
+      </h2>
+      <img
+        alt="avatar"
+        class="avatar"
+        src="./avatars/tyler.jpg"
+      />
+      <span />
+      <form
+        class="new-question-form"
+        data-testid="new-question-form"
+      >
+        <h3>
+          Would You Rather?
+        </h3>
+        <div
+          class="question-area"
+        >
+          <label>
+            Answer 1
+          </label>
+          <textarea
+            data-testid="question-text-1"
+            id="optionOneText"
+          />
+          <label>
+            Answer 2
+          </label>
+          <textarea
+            data-testid="question-text-2"
+            id="optionTwoText"
+          />
+        </div>
+        <button
+          class="question-submit-btn"
+          data-testid="question-submit-btn"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

@@ -6,9 +6,9 @@ import { showLoading, hideLoading } from "react-redux-loading-bar";
 import { saveQuestion, saveQuestionAnswer } from "../utils/api";
 
 export function handleInitialData(user) {
-  return async (dispatch) => {
+  return (dispatch) => {
     dispatch(showLoading());
-    return await getInitialData().then(({ users, questions }) => {
+    return getInitialData().then(({ users, questions }) => {
       dispatch(receiveUsers(users));
       dispatch(receiveQuestions(questions));
       dispatch(setAuthedUser(user));
@@ -20,8 +20,8 @@ export function handleInitialData(user) {
 export function getUsers() {
   return async (dispatch) => {
     dispatch(showLoading());
-    return loadUsers().then(async ({ users }) => {
-      await dispatch(receiveUsers(users));
+    return loadUsers().then(({ users }) => {
+      dispatch(receiveUsers(users));
       dispatch(hideLoading());
     });
   };

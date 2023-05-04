@@ -22,7 +22,11 @@ const Login = (props) => {
       {loadingBar.default ? (
         <Loading />
       ) : (
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form
+          className="login-form"
+          onSubmit={handleSubmit}
+          data-testid="login-form"
+        >
           <h3>Login Page</h3>
           <select
             name="user"

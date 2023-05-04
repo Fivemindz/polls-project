@@ -25,7 +25,7 @@ const Dash = (props) => {
   };
 
   return (
-    <div className="dashboard">
+    <div className="dashboard" data-testid="dash">
       <div>
         <div className="poll-selector">
           <button

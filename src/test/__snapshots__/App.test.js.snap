@@ -1,5 +1,478 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Test App Component Snapshot: Renders Dash once user is logged in 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        style="direction: ltr;"
+      >
+        <div
+          class=""
+          style="width: 0%; transition: width 800ms linear 0s; will-change: width, opacity; height: 3px; background-color: red; position: absolute; opacity: 0;"
+        />
+        <div
+          style="display: table; clear: both;"
+        />
+      </div>
+      <div
+        class="container"
+        data-testid="home-page"
+      >
+        <div
+          class="dash-body"
+        >
+          <div
+            class="user-banner"
+          >
+            <div
+              class="user-info"
+            >
+              <img
+                alt="avatar"
+                class="avatar"
+                src="./avatars/tyler.jpg"
+              />
+              <div
+                class="user-name"
+              >
+                 
+                tylermcginnis
+              </div>
+            </div>
+            <div
+              class="banner-spacer"
+            />
+            <div
+              class="btn-container"
+            >
+              <button
+                class="sign-out-btn"
+              >
+                Sign Out
+              </button>
+            </div>
+          </div>
+          <div
+            class="nav"
+          >
+            <ul>
+              <a
+                class="nav-link"
+                href="/"
+              >
+                <li>
+                  Dashboard
+                </li>
+              </a>
+              <a
+                class="nav-link"
+                href="/stats"
+              >
+                <li>
+                  Stats
+                </li>
+              </a>
+              <a
+                class="nav-link"
+                href="/newquestion"
+              >
+                <li>
+                  New Poll
+                </li>
+              </a>
+            </ul>
+          </div>
+          <div
+            class="dashboard"
+            data-testid="dash"
+          >
+            <div>
+              <div
+                class="poll-selector"
+              >
+                <button
+                  class="btn-selector-active"
+                >
+                  Unanswered
+                </button>
+                <div
+                  class="poll-seperator"
+                >
+                  |
+                </div>
+                <button
+                  class="btn-selector"
+                >
+                  Answered
+                </button>
+              </div>
+              <div>
+                <ul
+                  class="polls-table"
+                >
+                  <li
+                    class="question"
+                  >
+                    <a
+                      class="question-link"
+                      href="/question/am8ehyc8byjqgar0jgpub9"
+                    >
+                      <div
+                        class="question-info"
+                      >
+                        <div
+                          class="question-author"
+                        >
+                          sarahedo
+                        </div>
+                        <div
+                          class="question-date"
+                        >
+                          4:22:PM | 3/3/2017
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li
+                    class="question"
+                  >
+                    <a
+                      class="question-link"
+                      href="/question/loxhs1bqm25b708cmbf3g"
+                    >
+                      <div
+                        class="question-info"
+                      >
+                        <div
+                          class="question-author"
+                        >
+                          tylermcginnis
+                        </div>
+                        <div
+                          class="question-date"
+                        >
+                          5:42:AM | 12/24/2016
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li
+                    class="question"
+                  >
+                    <a
+                      class="question-link"
+                      href="/question/6ni6ok3ym7mf1p33lnez"
+                    >
+                      <div
+                        class="question-info"
+                      >
+                        <div
+                          class="question-author"
+                        >
+                          mtsamis
+                        </div>
+                        <div
+                          class="question-date"
+                        >
+                          2:02:AM | 7/14/2016
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li
+                    class="question"
+                  >
+                    <a
+                      class="question-link"
+                      href="/question/8xf0y6ziyjabvozdd253nd"
+                    >
+                      <div
+                        class="question-info"
+                      >
+                        <div
+                          class="question-author"
+                        >
+                          sarahedo
+                        </div>
+                        <div
+                          class="question-date"
+                        >
+                          9:21:PM | 6/28/2016
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      style="direction: ltr;"
+    >
+      <div
+        class=""
+        style="width: 0%; transition: width 800ms linear 0s; will-change: width, opacity; height: 3px; background-color: red; position: absolute; opacity: 0;"
+      />
+      <div
+        style="display: table; clear: both;"
+      />
+    </div>
+    <div
+      class="container"
+      data-testid="home-page"
+    >
+      <div
+        class="dash-body"
+      >
+        <div
+          class="user-banner"
+        >
+          <div
+            class="user-info"
+          >
+            <img
+              alt="avatar"
+              class="avatar"
+              src="./avatars/tyler.jpg"
+            />
+            <div
+              class="user-name"
+            >
+               
+              tylermcginnis
+            </div>
+          </div>
+          <div
+            class="banner-spacer"
+          />
+          <div
+            class="btn-container"
+          >
+            <button
+              class="sign-out-btn"
+            >
+              Sign Out
+            </button>
+          </div>
+        </div>
+        <div
+          class="nav"
+        >
+          <ul>
+            <a
+              class="nav-link"
+              href="/"
+            >
+              <li>
+                Dashboard
+              </li>
+            </a>
+            <a
+              class="nav-link"
+              href="/stats"
+            >
+              <li>
+                Stats
+              </li>
+            </a>
+            <a
+              class="nav-link"
+              href="/newquestion"
+            >
+              <li>
+                New Poll
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div
+          class="dashboard"
+          data-testid="dash"
+        >
+          <div>
+            <div
+              class="poll-selector"
+            >
+              <button
+                class="btn-selector-active"
+              >
+                Unanswered
+              </button>
+              <div
+                class="poll-seperator"
+              >
+                |
+              </div>
+              <button
+                class="btn-selector"
+              >
+                Answered
+              </button>
+            </div>
+            <div>
+              <ul
+                class="polls-table"
+              >
+                <li
+                  class="question"
+                >
+                  <a
+                    class="question-link"
+                    href="/question/am8ehyc8byjqgar0jgpub9"
+                  >
+                    <div
+                      class="question-info"
+                    >
+                      <div
+                        class="question-author"
+                      >
+                        sarahedo
+                      </div>
+                      <div
+                        class="question-date"
+                      >
+                        4:22:PM | 3/3/2017
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li
+                  class="question"
+                >
+                  <a
+                    class="question-link"
+                    href="/question/loxhs1bqm25b708cmbf3g"
+                  >
+                    <div
+                      class="question-info"
+                    >
+                      <div
+                        class="question-author"
+                      >
+                        tylermcginnis
+                      </div>
+                      <div
+                        class="question-date"
+                      >
+                        5:42:AM | 12/24/2016
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li
+                  class="question"
+                >
+                  <a
+                    class="question-link"
+                    href="/question/6ni6ok3ym7mf1p33lnez"
+                  >
+                    <div
+                      class="question-info"
+                    >
+                      <div
+                        class="question-author"
+                      >
+                        mtsamis
+                      </div>
+                      <div
+                        class="question-date"
+                      >
+                        2:02:AM | 7/14/2016
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li
+                  class="question"
+                >
+                  <a
+                    class="question-link"
+                    href="/question/8xf0y6ziyjabvozdd253nd"
+                  >
+                    <div
+                      class="question-info"
+                    >
+                      <div
+                        class="question-author"
+                      >
+                        sarahedo
+                      </div>
+                      <div
+                        class="question-date"
+                      >
+                        9:21:PM | 6/28/2016
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
 exports[`Test App Component Snapshot:Renders the login page if user is not logged in 1`] = `
 Object {
   "asFragment": [Function],
@@ -32,28 +505,201 @@ Object {
             >
               
   
-              <path
-                d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"
-                opacity=".25"
-              />
-              
-  
-              <path
-                d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z"
+              <circle
+                cx="16"
+                cy="3"
+                r="0"
               >
                 
     
-                <animatetransform
-                  attributeName="transform"
-                  dur="0.8s"
-                  from="0 16 16"
+                <animate
+                  attributeName="r"
+                  begin="0"
+                  calcMode="spline"
+                  dur="1s"
+                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
                   repeatCount="indefinite"
-                  to="360 16 16"
-                  type="rotate"
+                  values="0;3;0;0"
                 />
                 
   
-              </path>
+              </circle>
+              
+  
+              <circle
+                cx="16"
+                cy="3"
+                r="0"
+                transform="rotate(45 16 16)"
+              >
+                
+    
+                <animate
+                  attributeName="r"
+                  begin="0.125s"
+                  calcMode="spline"
+                  dur="1s"
+                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                  repeatCount="indefinite"
+                  values="0;3;0;0"
+                />
+                
+  
+              </circle>
+              
+  
+              <circle
+                cx="16"
+                cy="3"
+                r="0"
+                transform="rotate(90 16 16)"
+              >
+                
+    
+                <animate
+                  attributeName="r"
+                  begin="0.25s"
+                  calcMode="spline"
+                  dur="1s"
+                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                  repeatCount="indefinite"
+                  values="0;3;0;0"
+                />
+                
+  
+              </circle>
+              
+  
+              <circle
+                cx="16"
+                cy="3"
+                r="0"
+                transform="rotate(135 16 16)"
+              >
+                
+    
+                <animate
+                  attributeName="r"
+                  begin="0.375s"
+                  calcMode="spline"
+                  dur="1s"
+                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                  repeatCount="indefinite"
+                  values="0;3;0;0"
+                />
+                
+  
+              </circle>
+              
+  
+              <circle
+                cx="16"
+                cy="3"
+                r="0"
+                transform="rotate(180 16 16)"
+              >
+                
+    
+                <animate
+                  attributeName="r"
+                  begin="0.5s"
+                  calcMode="spline"
+                  dur="1s"
+                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                  repeatCount="indefinite"
+                  values="0;3;0;0"
+                />
+                
+  
+              </circle>
+              
+  
+              <circle
+                cx="16"
+                cy="3"
+                r="0"
+                transform="rotate(225 16 16)"
+              >
+                
+    
+                <animate
+                  attributeName="r"
+                  begin="0.625s"
+                  calcMode="spline"
+                  dur="1s"
+                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                  repeatCount="indefinite"
+                  values="0;3;0;0"
+                />
+                
+  
+              </circle>
+              
+  
+              <circle
+                cx="16"
+                cy="3"
+                r="0"
+                transform="rotate(270 16 16)"
+              >
+                
+    
+                <animate
+                  attributeName="r"
+                  begin="0.75s"
+                  calcMode="spline"
+                  dur="1s"
+                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                  repeatCount="indefinite"
+                  values="0;3;0;0"
+                />
+                
+  
+              </circle>
+              
+  
+              <circle
+                cx="16"
+                cy="3"
+                r="0"
+                transform="rotate(315 16 16)"
+              >
+                
+    
+                <animate
+                  attributeName="r"
+                  begin="0.875s"
+                  calcMode="spline"
+                  dur="1s"
+                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                  repeatCount="indefinite"
+                  values="0;3;0;0"
+                />
+                
+  
+              </circle>
+              
+  
+              <circle
+                cx="16"
+                cy="3"
+                r="0"
+                transform="rotate(180 16 16)"
+              >
+                
+    
+                <animate
+                  attributeName="r"
+                  begin="0.5s"
+                  calcMode="spline"
+                  dur="1s"
+                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                  repeatCount="indefinite"
+                  values="0;3;0;0"
+                />
+                
+  
+              </circle>
               
 
             </svg>
@@ -92,28 +738,201 @@ Object {
           >
             
   
-            <path
-              d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"
-              opacity=".25"
-            />
-            
-  
-            <path
-              d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z"
+            <circle
+              cx="16"
+              cy="3"
+              r="0"
             >
               
     
-              <animatetransform
-                attributeName="transform"
-                dur="0.8s"
-                from="0 16 16"
+              <animate
+                attributeName="r"
+                begin="0"
+                calcMode="spline"
+                dur="1s"
+                keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
                 repeatCount="indefinite"
-                to="360 16 16"
-                type="rotate"
+                values="0;3;0;0"
               />
               
   
-            </path>
+            </circle>
+            
+  
+            <circle
+              cx="16"
+              cy="3"
+              r="0"
+              transform="rotate(45 16 16)"
+            >
+              
+    
+              <animate
+                attributeName="r"
+                begin="0.125s"
+                calcMode="spline"
+                dur="1s"
+                keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                repeatCount="indefinite"
+                values="0;3;0;0"
+              />
+              
+  
+            </circle>
+            
+  
+            <circle
+              cx="16"
+              cy="3"
+              r="0"
+              transform="rotate(90 16 16)"
+            >
+              
+    
+              <animate
+                attributeName="r"
+                begin="0.25s"
+                calcMode="spline"
+                dur="1s"
+                keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                repeatCount="indefinite"
+                values="0;3;0;0"
+              />
+              
+  
+            </circle>
+            
+  
+            <circle
+              cx="16"
+              cy="3"
+              r="0"
+              transform="rotate(135 16 16)"
+            >
+              
+    
+              <animate
+                attributeName="r"
+                begin="0.375s"
+                calcMode="spline"
+                dur="1s"
+                keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                repeatCount="indefinite"
+                values="0;3;0;0"
+              />
+              
+  
+            </circle>
+            
+  
+            <circle
+              cx="16"
+              cy="3"
+              r="0"
+              transform="rotate(180 16 16)"
+            >
+              
+    
+              <animate
+                attributeName="r"
+                begin="0.5s"
+                calcMode="spline"
+                dur="1s"
+                keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                repeatCount="indefinite"
+                values="0;3;0;0"
+              />
+              
+  
+            </circle>
+            
+  
+            <circle
+              cx="16"
+              cy="3"
+              r="0"
+              transform="rotate(225 16 16)"
+            >
+              
+    
+              <animate
+                attributeName="r"
+                begin="0.625s"
+                calcMode="spline"
+                dur="1s"
+                keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                repeatCount="indefinite"
+                values="0;3;0;0"
+              />
+              
+  
+            </circle>
+            
+  
+            <circle
+              cx="16"
+              cy="3"
+              r="0"
+              transform="rotate(270 16 16)"
+            >
+              
+    
+              <animate
+                attributeName="r"
+                begin="0.75s"
+                calcMode="spline"
+                dur="1s"
+                keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                repeatCount="indefinite"
+                values="0;3;0;0"
+              />
+              
+  
+            </circle>
+            
+  
+            <circle
+              cx="16"
+              cy="3"
+              r="0"
+              transform="rotate(315 16 16)"
+            >
+              
+    
+              <animate
+                attributeName="r"
+                begin="0.875s"
+                calcMode="spline"
+                dur="1s"
+                keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                repeatCount="indefinite"
+                values="0;3;0;0"
+              />
+              
+  
+            </circle>
+            
+  
+            <circle
+              cx="16"
+              cy="3"
+              r="0"
+              transform="rotate(180 16 16)"
+            >
+              
+    
+              <animate
+                attributeName="r"
+                begin="0.5s"
+                calcMode="spline"
+                dur="1s"
+                keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                repeatCount="indefinite"
+                values="0;3;0;0"
+              />
+              
+  
+            </circle>
             
 
           </svg>

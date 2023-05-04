@@ -85,6 +85,7 @@ const QuestionPage = (props) => {
                 id="optionOne"
                 type="checkbox"
                 onClick={(e) => updateOption(e, "optionOne")}
+                data-testid="answer-checkbox"
               />
             )}
 
@@ -133,7 +134,11 @@ const QuestionPage = (props) => {
             )}
           </div>
         </div>
-        {needanswer && <button type="submit">Submit Answer</button>}
+        {needanswer && (
+          <button type="submit" data-testid="answer-btn">
+            Submit Answer
+          </button>
+        )}
       </form>
     </div>
   );

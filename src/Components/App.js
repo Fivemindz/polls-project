@@ -43,7 +43,7 @@ const App = (props) => {
           <div className="dash-body">
             <Banner />
             <Nav />
-            {loadingBar.default ? (
+            {loadingBar ? (
               <div className="dash-loading">
                 <Loading />
               </div>
@@ -63,9 +63,8 @@ const App = (props) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, loadingBar }) => ({
+const mapStateToProps = ({ authedUser }) => ({
   loading: authedUser === null,
-  loadingBar,
 });
 
 export default connect(mapStateToProps)(App);
