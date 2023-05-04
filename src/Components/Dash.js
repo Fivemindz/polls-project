@@ -8,6 +8,7 @@ const Dash = (props) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
+    console.log("rerender");
     const updateData = () => {
       setData(unanswered);
     };

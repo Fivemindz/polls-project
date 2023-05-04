@@ -21,7 +21,7 @@ describe("Test NewQuestion component ", () => {
     expect(component).toMatchSnapshot();
   });
 
-  it("Test question has been added after all expected fields are populated", async () => {
+  it("Question added after all expected fields are populated and returns to dash", async () => {
     const component = render(
       <Provider store={store}>
         <Router>

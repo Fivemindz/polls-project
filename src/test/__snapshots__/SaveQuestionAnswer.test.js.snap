@@ -357,7 +357,7 @@ Object {
 }
 `;
 
-exports[`Save Question Workflow Snapshot: Renders QuestionPage after clicking on first unanswered question by sarahedo 1`] = `
+exports[`Save Question Workflow Snapshot: Renders QuestionPage after clicking on question from dashboard 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>

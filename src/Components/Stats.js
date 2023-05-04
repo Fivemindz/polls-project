@@ -6,7 +6,7 @@ const Stats = (props) => {
 
   return (
     <div className="dashboard">
-      <div className="stats-table">
+      <div className="stats-table" data-testid="stats-table">
         <h2>Stats Table</h2>
         <table>
           <tbody>

@@ -10,7 +10,7 @@ describe("Save Question Workflow", () => {
     await store.dispatch(handleInitialData("tylermcginnis"));
   });
 
-  it("Snapshot: Renders QuestionPage after clicking on first unanswered question by sarahedo", () => {
+  it("Snapshot: Renders QuestionPage after clicking on question from dashboard", () => {
     const component = render(
       <Provider store={store}>
         <Router>
@@ -42,5 +42,28 @@ describe("Save Question Workflow", () => {
     fireEvent.click(btn);
 
     expect(component).toMatchSnapshot();
+  });
+
+  it("Displays message when user trys to submit without answer", () => {
+    const component = render(
+      <Provider store={store}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
+    );
+
+    const link = component.getAllByText("tylermcginnis");
+    fireEvent.click(link[0]);
+
+    const btn = component.getByTestId("answer-btn");
+    fireEvent.click(btn);
+
+    waitFor(() => {
+      const selectOptionMessage = component.getByTestId(
+        "select-option-message"
+      );
+      expect(selectOptionMessage).toBeInTheDocument();
+    });
   });
 });

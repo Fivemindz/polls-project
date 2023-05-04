@@ -3,6 +3,7 @@ import "./QuestionPage.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { handleAddQuestionAnswer } from "../actions/shared";
 import Redirector from "./Redirector";
+import { useState } from "react";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {
@@ -17,6 +18,7 @@ const withRouter = (Component) => {
 
 const QuestionPage = (props) => {
   const { question, authorInfo, authedUserInfo, dispatch } = props;
+  const [selectOption, setSelectOption] = useState(false);
 
   if (!authorInfo) {
     return <Redirector />;
@@ -25,7 +27,7 @@ const QuestionPage = (props) => {
   const answerIds = Object.keys(authedUserInfo.answers);
   let needanswer = false;
   let showStats = true;
-  let answer = "none";
+  let answer = null;
 
   let answer1Count = question.optionOne.votes.length;
   let answer2Count = question.optionTwo.votes.length;
@@ -39,7 +41,7 @@ const QuestionPage = (props) => {
   }
 
   if (answerIds.includes(question.id)) {
-    if (question.optionOne.votes.includes(authorInfo.id)) {
+    if (question.optionOne.votes.includes(authedUserInfo.id)) {
       answer1 = true;
     } else {
       answer2 = true;
@@ -48,6 +50,9 @@ const QuestionPage = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (answer === null) {
+      return setSelectOption(true);
+    }
     dispatch(
       handleAddQuestionAnswer({
         authedUser: authedUserInfo.id,
@@ -55,7 +60,9 @@ const QuestionPage = (props) => {
         answer,
       })
     );
+    console.log(answer);
     showStats = true;
+    setSelectOption(false);
   };
 
   const updateOption = (e, option) => {
@@ -76,6 +83,11 @@ const QuestionPage = (props) => {
       />
       <form className="view-question-form" onSubmit={handleSubmit}>
         <h3>Would You Rather?</h3>
+        {selectOption && (
+          <h4 className="select-option" data-testid="select-option-message">
+            MUST SELECT AT LEAST ONE OPTION!
+          </h4>
+        )}
         <div className="question-area">
           <label>Answer 1</label>
           {answer1 && <div className="answer">Your Answer</div>}
