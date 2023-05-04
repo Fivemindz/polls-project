@@ -54,6 +54,7 @@ const App = (props) => {
                 <Route path="/newquestion" element={<NewQuestion />} />
                 <Route path="/question/:id" element={<QuestionPage />} />
                 <Route path="/notfound" element={<PageNotFound />} />
+                <Route path="/*" element={<PageNotFound />} />
               </Routes>
             )}
           </div>
